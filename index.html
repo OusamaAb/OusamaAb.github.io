@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ousama Alabdullah Portfolio Website</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/55d8be9233.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="header">
+        <div class="container">
+            <nav>
+                <img src="pictures/OusamaLogo.png" class="logo" style="width: 40%;">
+                <ul id="sidemenu">
+                    <li><a href="#header">Home</a></li>
+                    <li><a href="#about">About Me</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
+                </ul>
+                <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+
+            </nav>
+            <div class="header-text">
+                <h1> Hi, I'm <span>Ousama</span><br>From Toronto Metropolitan University</h1>
+            </div>
+        </div>
+    </div>
+    <!-----------about-------------->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="about-col-1">
+                    <img src="pictures/LinkedHead2.png">
+                </div>
+                <div class="about-col-2">
+                    <h1 class="sub-title">About Me</h1>
+                    <p>
+                        Hello! I am a passionate and detail-oriented software engineering student with a strong foundation in computer science. My journey in the world of programming began with a fascination for solving complex problems and creating innovative solutions. Currently pursuing my degree, I thrive on learning and staying abreast of the latest technologies. My hands-on experience includes projects ranging from web development to database administration, showcasing my adaptability and commitment to mastering diverse aspects of software engineering. With a collaborative mindset and a love for tackling challenges head-on, I am eager to contribute my skills and continue growing in this field.
+                    </p>
+                    <div class="tab-titles">
+                        <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                        <p class="tab-links" onclick="opentab('coursework')">CourseWork</p>
+                        <p class="tab-links" onclick="opentab('education')">Education</p>
+                    </div>
+                    <div class="tab-contents active-tab" id="skills">
+                        <ul>
+                            <li><span>Languages</span><br> C/C++/C#, HTML/CSS, Java, Javascript, SQL</li>
+                            <li><span>Database administration</span><br>Managing and Maintaining Databases</li>
+                            <li><span>Web development</span><br>Building Web Applications</li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="coursework">
+                        <ul>
+                            <li><span>COE428</span><br>Algorithms and Data Structures</li>
+                            <li><span>MTH314</span><br>Discrete Mathematics</li>
+                            <li><span>COE528</span><br>Object Oriented Analysis and Design</li>
+                            <li><span>CPS688</span><br>Advanced Algorithms</li>
+                            <li><span>CPS510</span><br>Database Systems</li>
+                            <li><span>COE691</span><br>Software Requirements and Analysis</li>
+                            <li><span>COE628</span><br>Operating Systems</li>
+                        </ul>
+                </div>
+                <div class="tab-contents" id="education">
+                    <ul>
+                        <li><span>Highschool</span><br>Graduated from Stephen Lewis SS, Mississauga, Ontario</li>
+                        <li><span>University</span><br>Computer Engineering(Software Option) Toronto Metropolitan University</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!------------------------ Projects ------------------------------------->
+<div id="projects">
+    <div class="container">
+        <h1 class="sub-title">My Projects</h1>
+        <div class="projects-list">
+            <div>
+                <h2>Sudoku Game <i class="fa-solid fa-gamepad"></i></h2>
+                <p> I built a Sudoku game that starts a brand new game everytime the webpage is refreshed, the board is randomized everytime. I built this using HTML and CSS for the web page design, and Javascript for the board logic. Click the link to play!</p>
+                <a href="https://ousamaab.github.io/Sudoku/"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+            <div>
+                <h2>Job bank Database <i class="fa-solid fa-database"></i></h2>
+                <p> This is a project I worked on in CPS510, Database Systems. My group and I were tasked with creating a job bank database using SQL and oracle. Click the link to be redirected to a google document with the summary of this project.<br></p>
+                <a href="https://docs.google.com/document/d/1G75UK10uqHTthyyoIO2ggtCKlF27EtQY9jFYxVilkWk/edit?usp=sharing"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+            <div>
+                <h2>Currency Converter <i class="fa-solid fa-wallet"></i></h2>
+                <p> This is a personal project I worked on in my free time. It converts from one currency to another. This was built in order to show my understanding of webapis. Click the link to convert currencies!</p>
+                <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+<!---------------------------------------- Contact Me--------------------------->
+  <div id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="contact-left">
+                <div class="sub-title">Contact Me</div>
+                <p><i class="fa-solid fa-paper-plane"></i>Ousama.Alabdullah@torontomu.ca</p>
+                <p><i class="fa-solid fa-phone"></i>(1)647-997-4413</p>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/ousama-alabdullah/"><i style="font-size: 40px;" class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://github.com/OusamaAb"><i style="font-size: 40px;" class="fa-brands fa-square-github"></i></a>
+                    <a href="pictures/Ousama_Alabdullah_Resume_Link.pdf" download class=" btn" style="color: #fff;">Download Resume</a>
+                </div>
+            </div>
+            <div class="contact-right">
+                <form name="submit-to-google-sheet">
+                    <input type="text" name="Name" placeholder="Your Name" required>
+                    <input type="email" name="Email" placeholder="Your Email" required>
+                    <textarea name="Message"rows="6" placeholder="Your Message"></textarea>
+                    <button type="submit" class="btn btn2" style="font-size: 30px;"> Submit</button>
+                </form>
+                <span id="msg"></span>
+            </div>
+        </div>
+    </div>
+  </div>  
+    <script>
+            var tablinks = document.getElementsByClassName("tab-links");
+            var tabcontents = document.getElementsByClassName("tab-contents");
+            
+            function opentab(tabname){
+                for(tablink of tablinks){
+                    tablink.classList.remove("active-link");
+                }
+                for(tabcontent of tabcontents){
+                    tabcontent.classList.remove("active-tab");
+                }
+                event.currentTarget.classList.add("active-link");
+                document.getElementById(tabname).classList.add("active-tab")
+            }
+
+    </script>
+    <script>
+
+        var sidemenu = document.getElementById("sidemenu")
+
+        function openmenu(){
+            sidemenu.style.right = "0";
+        }
+        function closemenu(){
+            sidemenu.style.right = "-400px";
+        }
+
+
+    </script>
+      <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxsZrFNWzaVGkS7dOVMMkViYCn6qR6cs7rrl5mQe02g2JbR2b9esCVyTl5fAsxAYdJ9Iw/exec'
+        const form = document.forms['submit-to-google-sheet']
+        const msg = document.getElementById("msg")
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                msg.innerHTML = "Message Sent"
+                setTimeout(function(){ msg.innerHTML = ""}, 3000)
+                form.reset()
+            })
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
+</body>
+</html>
