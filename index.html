@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Adventure - Ousama Alabdullah's Interactive Resume</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="gameContainer">
+        <!-- Game Canvas -->
+        <canvas id="gameCanvas" width="1200" height="400"></canvas>
+        
+        <!-- UI Elements -->
+        <div id="ui">
+            <div id="lives">Lives: <span id="livesCount">3</span></div>
+            <div id="progress">Progress: <span id="progressCount">0/5</span></div>
+        </div>
+        
+        <!-- Mobile Jump Button -->
+        <button id="jumpButton" class="mobile-jump-btn">JUMP</button>
+        
+        <!-- Pause Button -->
+        <button id="pauseButton" class="pause-btn">PAUSE</button>
+        
+        <!-- Menu Button -->
+        <button id="menuButton" class="menu-btn">MENU</button>
+        
+        <!-- Instructions -->
+        <div id="instructions">
+            <h2>Portfolio Adventure</h2>
+            <p>Use SPACE or ↑ to jump on obstacles and learn about Ousama!</p>
+            <p>Land on top of obstacles to read portfolio sections.</p>
+            <p>If you don't feel like playing, but still want to learn about me, you can click the MENU button to access the portfolio sections during the game!</p>
+            
+            <h3>🎮 How to Play:</h3>
+            <ul>
+                <li><strong>Desktop:</strong> Use SPACE or ↑ arrow key to jump</li>
+                <li><strong>Mobile:</strong> Tap the screen or use the JUMP button</li>
+                <li><strong>Goal:</strong> Land on obstacles to learn about me!</li>
+                <li><strong>Lives:</strong> You have 3 lives - don't hit obstacles from the side or bottom!</li>
+                <li><strong>Win:</strong> Collect all 5 portfolio sections to win the game!</li>
+            </ul>
+            
+            <button id="enableAudio">🔊 Enable Sound</button>
+            <button id="startGame">Start Adventure</button>
+        </div>
+    </div>
+
+    <!-- Portfolio Section Modals -->
+    <div id="aboutModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>About Me</h2>
+            <div class="portfolio-content">
+                <h3>Welcome to my Interactive Portfolio!</h3>
+                <p>Hello! I'm <strong>Ousama Alabdullah</strong>, an aspiring software engineer. I love to solve problems with my creativity andbuild fun projects.</p>
+                <p>I love technology and would love to contribute to its advancement, I am a large believer that automation can solve most of the problems in the world. My dream is to normalize automation where the world needs it most, developing countries like my home country Syria.</p>
+                <p>When In my free time, you'll find me building computers, playing soccer and basketball, hitting the gym, or enjoying my favorite foods - shawarma, sushi, and burgers!</p>
+                <h4>About This Portfolio:</h4>
+                <p>This interactive portfolio is meant to showcases my skills, I personally hate resumes, they're too boring. Hopefully you feel the same way!😄</p>
+                <p><em>Thanks for playing! Feel free to explore the other sections to learn more about my background, projects, and experience.</em></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="educationModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Education & Courses</h2>
+            <div class="portfolio-content">
+                <h3>Toronto Metropolitan University</h3>
+                <p><strong>Degree:</strong> Software Engineering</p>
+                <p><strong>Graduation:</strong> 2026</p>
+                
+                <h4>Relevant Coursework:</h4>
+                <ul>
+                    <li>Advanced Data Structures and Algorithms</li>
+                    <li>Introduction to Computer Vision</li>
+                    <li>Database Systems</li>
+                    <li>Distrubted and Cloud Computing</li>
+                    <li>Software Design and Architecture</li>
+                    <li>Computer Networks</li>
+                    <li>Software Testing and Quality Assurance</li>
+                    <li>Software Requirement Analysis</li>
+                    <li>Object-Oriented Programming</li>
+                    <li>Operating Systems</li>
+                    <li>Software Project Management</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="projectsModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Projects</h2>
+            <div class="portfolio-content">
+                <div class="project">
+                    <h3><a href="https://github.com/OusamaAb/football-pickems" target="_blank">Football Pick'Ems (Click Me!)</a></h3>
+                    <p>It's a fun, risk-free game where friends compete to predict football match outcomes, players, and scores, similar to a fantasy league mixed with sports betting.</p>
+                    <p><strong>Technologies:</strong> React.js, Next.js, Tailwind CSS, TypeScript, AWS (DynamoDB, Lambda, API Gateway, S3)</p>
+                </div>
+                
+                <div class="project">
+                    <h3><a href="https://github.com/OusamaAb/Chat-with-NAO-robot-using-ChatGPT" target="_blank">Communicate with NAO Robot using ChatGPT (Click Me!)</a></h3>
+                    <p>I programmed the NAO robot to combine vision, audio, and motion into one system. Using ChatGPT for conversations, Python with OpenCV and NAOqi for face recognition, and motion controls for dancing and obstacle avoidance, the robot can recognize people, respond naturally, and move interactively.</p>
+                    <p><strong>Technologies:</strong> Python, OpenCV, NAOqi APIs, ChatGPT API, Websockets, AWS Transcribe, AWS Polly, AWS Rekognition</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="experienceModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Experience</h2>
+            <div class="portfolio-content">
+                <div class="experience">
+                    <h3>Engineering Intern - Ministry Of Transportation Ontario</h3>
+                    <p><strong>Duration:</strong> April 2024 - August 2025</p>
+                    <p>At the Ministry of Transportation, I developed Python scripts to extract traffic data from the HERE platform via XML, using Shapely and GeoPandas to clean and process spatial data for accurate route-based analysis. I managed Oracle databases with SQL, ensuring data integrity and security through rigorous code review practices. To improve operations, I created a PowerApps-based ITS Systems Inventory app with an interactive map for filtering by area and highway segments. I also designed automated ETL pipelines to consolidate traffic data from HERE, TomTom, and Waze, which improved efficiency and data completeness across multiple routes. Additionally, I streamlined PowerApps development and deployment by implementing Microsoft DevOps for version control and CI/CD pipelines, enhancing collaboration and release management.</p>
+                </div>
+                
+                <div class="experience">
+                    <h3>Data Analyst Intern - Vanguard Financial</h3>
+                    <p><strong>Duration:</strong> April 2021 - July 2021</p>
+                    <p>At Vanguard Financial, I improved SQL queries to optimize data extraction, making weekly reports faster and more reliable. I automated data cleaning and processing in Python, which reduced manual effort and enhanced overall data accuracy. I also developed dashboards in Power BI and Tableau that gave teams instant visibility into key trends, improving accessibility and reducing the need for additional report requests. Together, these contributions streamlined reporting workflows, strengthened data quality, and provided stakeholders with clearer, more actionable insights.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="certificationsModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Certifications</h2>
+            <div class="portfolio-content">
+                <div class="certification">
+                    <h3><a href="resources/aws-cloud-practitioner (1).pdf" download target="_blank">AWS Certified Cloud Practitioner (Click Me!)</a></h3>
+                    <p><strong>Issuing Organization:</strong> Amazon Web Services</p>
+                    <p><strong>Issue Date:</strong> September 2024</p>
+                    <p><strong>Expiry Date:</strong> September 2027</p>
+                </div>
+                
+                <div class="certification">
+                    <h3><a href="resources/aws-ai-practitioner (1).pdf" download target="_blank">AWS Certified AI Practitioner (Click Me!)</a></h3>
+                    <p><strong>Issuing Organization:</strong> Amazon Web Services</p>
+                    <p><strong>Issue Date:</strong> December 2024</p>
+                    <p><strong>Expiry Date:</strong> December 2027</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Win Screen Modal -->
+    <div id="winModal" class="modal">
+        <div class="modal-content win-content">
+            <h2>🎉 Congratulations! 🎉</h2>
+            <p>You've completed the Portfolio Adventure!</p>
+            <div class="contact-info">
+                <h3>Let's Connect!</h3>
+                <div class="contact-links">
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=OusamaHAlabdullah@gmail.com" target="_blank" class="contact-btn email">📧 Email Me</a>
+                    <a href="https://github.com/OusamaAb" target="_blank" class="contact-btn github">💻 GitHub</a>
+                    <a href="https://linkedin.com/in/ousama-alabdullah" target="_blank" class="contact-btn linkedin">💼 LinkedIn</a>
+                    <a href="resources/Ousama Alabdullah Resume Final.pdf" download target="_blank" class="contact-btn resume">📄 Download Resume</a>
+                </div>
+                <button id="playAgain">Play Again</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pause Modal -->
+    <div id="pauseModal" class="modal">
+        <div class="modal-content">
+            <h2>GAME PAUSED</h2>
+            <p>Take a break and come back when you're ready!</p>
+            <button id="resumeGame">CONTINUE PLAYING</button>
+        </div>
+    </div>
+
+    <!-- Menu Modal -->
+    <div id="menuModal" class="modal">
+        <div class="modal-content">
+            <h2>PORTFOLIO MENU</h2>
+            <p>Choose a section to explore:</p>
+                <div class="menu-buttons">
+                    <button class="menu-section-btn" data-section="aboutModal">👋 ABOUT ME</button>
+                    <button class="menu-section-btn" data-section="educationModal">🎓 EDUCATION</button>
+                    <button class="menu-section-btn" data-section="experienceModal">💼 EXPERIENCE</button>
+                    <button class="menu-section-btn" data-section="projectsModal">🚀 PROJECTS</button>
+                    <button class="menu-section-btn" data-section="certificationsModal">🏆 CERTIFICATIONS</button>
+                    <button class="menu-section-btn" data-section="contactModal">📧 CONTACT ME</button>
+                </div>
+            <button id="closeMenu">CLOSE MENU</button>
+        </div>
+    </div>
+
+    <!-- Contact Modal (from menu) -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content win-content">
+            <span class="close">&times;</span>
+            <h2>📧 Let's Connect!</h2>
+            <div class="contact-info">
+                <div class="contact-links">
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=OusamaHAlabdullah@gmail.com" target="_blank" class="contact-btn email">📧 Email Me</a>
+                    <a href="https://github.com/OusamaAb" target="_blank" class="contact-btn github">💻 GitHub</a>
+                    <a href="https://linkedin.com/in/ousama-alabdullah" target="_blank" class="contact-btn linkedin">💼 LinkedIn</a>
+                    <a href="resources/Ousama Alabdullah Resume Final.pdf" download target="_blank" class="contact-btn resume">📄 Download Resume</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Over Modal -->
+    <div id="gameOverModal" class="modal">
+        <div class="modal-content">
+            <h2>Game Over!</h2>
+            <p>Don't worry, every developer faces obstacles!</p>
+            <button id="restartGame">Try Again</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
