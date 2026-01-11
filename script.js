@@ -193,9 +193,13 @@ const blockTypes = [
 // Initialize game
 function initGame() {
     canvas = document.getElementById('gameCanvas');
-    ctx = canvas.getContext('2d');
+    if (!canvas) {
+        console.error('Canvas element not found!');
+        return;
+    }
     
     // Set canvas height based on screen size - larger for mobile, original for desktop
+    // IMPORTANT: Set canvas dimensions BEFORE getting context to avoid clearing context
     const isMobile = window.innerWidth <= 768;
     if (isMobile) {
         canvas.height = 800;
@@ -206,6 +210,16 @@ function initGame() {
         canvas.height = 400;
         player.groundY = 300;
         player.y = 300;
+    }
+    
+    // Ensure canvas width is set
+    canvas.width = 1200;
+    
+    // Get context AFTER setting dimensions
+    ctx = canvas.getContext('2d');
+    if (!ctx) {
+        console.error('Could not get 2d context!');
+        return;
     }
     
     // Load character images
