@@ -6,11 +6,12 @@
     <title>Portfolio Adventure - Ousama Alabdullah's Interactive Resume</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id="gameContainer">
         <!-- Game Canvas -->
-        <canvas id="gameCanvas" width="1200" height="400"></canvas>
+        <canvas id="gameCanvas" width="1200" height="800"></canvas>
         
         <!-- UI Elements -->
         <div id="ui">
@@ -30,18 +31,8 @@
         <!-- Instructions -->
         <div id="instructions">
             <h2>Portfolio Adventure</h2>
-            <p>Use SPACE or ↑ to jump on obstacles and learn about Ousama!</p>
-            <p>Land on top of obstacles to read portfolio sections.</p>
-            <p>If you don't feel like playing, but still want to learn about me, you can click the MENU button to access the portfolio sections during the game!</p>
-            
-            <h3>🎮 How to Play:</h3>
-            <ul>
-                <li><strong>Desktop:</strong> Use SPACE or ↑ arrow key to jump</li>
-                <li><strong>Mobile:</strong> Tap the screen or use the JUMP button</li>
-                <li><strong>Goal:</strong> Land on obstacles to learn about me!</li>
-                <li><strong>Lives:</strong> You have 3 lives - don't hit obstacles from the side or bottom!</li>
-                <li><strong>Win:</strong> Collect all 5 portfolio sections to win the game!</li>
-            </ul>
+            <p>Jump on top of the boxes to read portfolio sections!</p>
+            <p>Want to browse without playing? Click the MENU button during the game.</p>
             
             <button id="enableAudio">🔊 Enable Sound</button>
             <button id="startGame">Start Adventure</button>
@@ -55,11 +46,11 @@
             <h2>About Me</h2>
             <div class="portfolio-content">
                 <h3>Welcome to my Interactive Portfolio!</h3>
-                <p>Hello! I'm <strong>Ousama Alabdullah</strong>, an aspiring software engineer. I love to solve problems with my creativity andbuild fun projects.</p>
-                <p>I love technology and would love to contribute to its advancement, I am a large believer that automation can solve most of the problems in the world. My dream is to normalize automation where the world needs it most, developing countries like my home country Syria.</p>
-                <p>When In my free time, you'll find me building computers, playing soccer and basketball, hitting the gym, or enjoying my favorite foods - shawarma, sushi, and burgers!</p>
+                <p>Hello! I'm <strong>Ousama Alabdullah</strong>, an aspiring software engineer. I love to solve problems with my creativity and build fun projects.</p>
+                <p>I love technology and would love to contribute to its advancement. I am a firm believer that automation can solve most of the problems in the world. My dream is to normalize automation where the world needs it most—developing countries like my home country Syria.</p>
+                <p>In my free time, you'll find me building computers, playing soccer and basketball, hitting the gym, or enjoying my favorite foods—shawarma, sushi, and burgers!</p>
                 <h4>About This Portfolio:</h4>
-                <p>This interactive portfolio is meant to showcases my skills, I personally hate resumes, they're too boring. Hopefully you feel the same way!😄</p>
+                <p>This interactive portfolio is meant to showcase my skills. I personally hate resumes—they're too boring. Hopefully you feel the same way! 😄</p>
                 <p><em>Thanks for playing! Feel free to explore the other sections to learn more about my background, projects, and experience.</em></p>
             </div>
         </div>
@@ -79,7 +70,7 @@
                     <li>Advanced Data Structures and Algorithms</li>
                     <li>Introduction to Computer Vision</li>
                     <li>Database Systems</li>
-                    <li>Distrubted and Cloud Computing</li>
+                    <li>Distributed and Cloud Computing</li>
                     <li>Software Design and Architecture</li>
                     <li>Computer Networks</li>
                     <li>Software Testing and Quality Assurance</li>
@@ -98,15 +89,37 @@
             <h2>Projects</h2>
             <div class="portfolio-content">
                 <div class="project">
-                    <h3><a href="https://github.com/OusamaAb/football-pickems" target="_blank">Football Pick'Ems (Click Me!)</a></h3>
-                    <p>It's a fun, risk-free game where friends compete to predict football match outcomes, players, and scores, similar to a fantasy league mixed with sports betting.</p>
-                    <p><strong>Technologies:</strong> React.js, Next.js, Tailwind CSS, TypeScript, AWS (DynamoDB, Lambda, API Gateway, S3)</p>
+                    <h3><a href="https://github.com/OusamaAb/Chat-with-NAO-robot-using-ChatGPT" target="_blank">Nao Interactive Robot (Click Me!)</a></h3>
+                    <ul>
+                        <li>Built a speech-to-response pipeline where NAO records speech through NAOqi, sends text via a WebSocket to a Flask server, which calls ChatGPT's API and returns a response for NAO to speak using text-to-speech</li>
+                        <li>Implemented facial recognition and object detection using vector encodings and an object detection model. Faces are matched by comparing new encodings to stored ones, and camera images are labeled by model</li>
+                        <li>Integrated all systems through NAOqi APIs to synchronize speech, vision, and motion, enabling real-time interaction</li>
+                    </ul>
+                    <p><strong>Technologies:</strong> Python, OpenCV, NAOqi APIs, ChatGPT API, WebSockets, Flask, AWS Transcribe, AWS Polly, AWS Rekognition</p>
                 </div>
                 
                 <div class="project">
-                    <h3><a href="https://github.com/OusamaAb/Chat-with-NAO-robot-using-ChatGPT" target="_blank">Communicate with NAO Robot using ChatGPT (Click Me!)</a></h3>
-                    <p>I programmed the NAO robot to combine vision, audio, and motion into one system. Using ChatGPT for conversations, Python with OpenCV and NAOqi for face recognition, and motion controls for dancing and obstacle avoidance, the robot can recognize people, respond naturally, and move interactively.</p>
-                    <p><strong>Technologies:</strong> Python, OpenCV, NAOqi APIs, ChatGPT API, Websockets, AWS Transcribe, AWS Polly, AWS Rekognition</p>
+                    <h3><a href="https://github.com/OusamaAb/BreakEven" target="_blank">Break Even - Full-Stack Finance Application (Click Me!)</a></h3>
+                    <ul>
+                        <li>Built a RESTful backend using Ruby on Rails (API-only) with PostgreSQL, implementing deterministic business logic for daily budgeting, automatic carryover, and historical budget tracking</li>
+                        <li>Designed a pre-computed daily ledger system using Rails service objects to support fast reads, consistent financial calculations, and correct recomputation when past expenses or budgets are modified</li>
+                        <li>Integrated JWT-based authentication with Supabase Auth (Google OAuth), enforcing server-side token verification and access control to ensure the backend remains the single source of truth</li>
+                        <li>Applied backend best practices including integer-based currency storage, timezone-aware date handling, indexed queries, and versioned APIs to ensure accuracy, security, and scalability</li>
+                    </ul>
+                    <p><strong>Technologies:</strong> Ruby on Rails, PostgreSQL, REST APIs, JWT Auth, Supabase Auth, Google OAuth</p>
+                </div>
+                
+                <div class="project">
+                    <h3><a href="https://github.com/OusamaAb/CPS843-Project-Document-Scanner-with-Text-Extraction" target="_blank">Document Scanner with Text Extraction (Click Me!)</a></h3>
+                    <ul>
+                        <li>Designed and implemented an end-to-end document scanning and OCR system using Python, OpenCV, and Tesseract to automatically detect documents, correct perspective distortion, and extract structured text</li>
+                        <li>Built a robust computer-vision pipeline including edge detection, contour analysis, polygon approximation, and four-point perspective transformation</li>
+                        <li>Developed an interactive GUI allowing users to manually adjust detected document boundaries for improved accuracy</li>
+                        <li>Implemented advanced OCR preprocessing techniques such as denoising, CLAHE, image sharpening, adaptive and Otsu thresholding, and morphological operations</li>
+                        <li>Visualized OCR results with word- and line-level bounding boxes to validate text extraction quality</li>
+                        <li>Generated clean, structured outputs including corrected document images, enhanced binaries, and extracted text files, demonstrating strong skills in computer vision, image processing, and user-centered software design</li>
+                    </ul>
+                    <p><strong>Technologies:</strong> Python, OpenCV, Tesseract OCR, Computer Vision, Image Processing</p>
                 </div>
             </div>
         </div>
@@ -120,13 +133,23 @@
                 <div class="experience">
                     <h3>Engineering Intern - Ministry Of Transportation Ontario</h3>
                     <p><strong>Duration:</strong> April 2024 - August 2025</p>
-                    <p>At the Ministry of Transportation, I developed Python scripts to extract traffic data from the HERE platform via XML, using Shapely and GeoPandas to clean and process spatial data for accurate route-based analysis. I managed Oracle databases with SQL, ensuring data integrity and security through rigorous code review practices. To improve operations, I created a PowerApps-based ITS Systems Inventory app with an interactive map for filtering by area and highway segments. I also designed automated ETL pipelines to consolidate traffic data from HERE, TomTom, and Waze, which improved efficiency and data completeness across multiple routes. Additionally, I streamlined PowerApps development and deployment by implementing Microsoft DevOps for version control and CI/CD pipelines, enhancing collaboration and release management.</p>
+                    <ul>
+                        <li>Developed a Python script to extract traffic data from the HERE traffic platform via XML, utilizing Shapely and GeoPandas to clean and process spatial data, enabling accurate route-based traffic data extraction and filtering</li>
+                        <li>Managed Oracle database systems using SQL, ensuring data integrity and security through rigorous code reviews that adhered to safety protocols</li>
+                        <li>Developed ITS Systems Inventory app, increasing task automation by 50% and reducing system lookup time by 30% with an interactive map for filtering by area or highway segments</li>
+                        <li>Designed and implemented automated ETL pipelines that consolidated traffic data from multiple sources (HERE, TomTom, Waze), reducing manual processing time by 45% and improving data completeness across 13 unique routes</li>
+                        <li>Streamlined development and deployment of PowerApps solutions using Microsoft DevOps for version control and pipeline management, improving release efficiency by 30% and enhancing team collaboration</li>
+                    </ul>
                 </div>
                 
                 <div class="experience">
                     <h3>Data Analyst Intern - Vanguard Financial</h3>
                     <p><strong>Duration:</strong> April 2021 - July 2021</p>
-                    <p>At Vanguard Financial, I improved SQL queries to optimize data extraction, making weekly reports faster and more reliable. I automated data cleaning and processing in Python, which reduced manual effort and enhanced overall data accuracy. I also developed dashboards in Power BI and Tableau that gave teams instant visibility into key trends, improving accessibility and reducing the need for additional report requests. Together, these contributions streamlined reporting workflows, strengthened data quality, and provided stakeholders with clearer, more actionable insights.</p>
+                    <ul>
+                        <li>Improved SQL queries to speed up data extraction by 35%, making weekly reports faster and more reliable</li>
+                        <li>Automated data cleaning and processing in Python which saved 40+ hours per month and improved accuracy to 99%</li>
+                        <li>Built dashboards in Power BI and Tableau that helped teams view key trends instantly, increasing report usage by 60% and cutting extra report requests by 25%</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -165,7 +188,7 @@
                     <a href="https://mail.google.com/mail/?view=cm&fs=1&to=OusamaHAlabdullah@gmail.com" target="_blank" class="contact-btn email">📧 Email Me</a>
                     <a href="https://github.com/OusamaAb" target="_blank" class="contact-btn github">💻 GitHub</a>
                     <a href="https://linkedin.com/in/ousama-alabdullah" target="_blank" class="contact-btn linkedin">💼 LinkedIn</a>
-                    <a href="resources/Ousama Alabdullah Resume Final.pdf" download target="_blank" class="contact-btn resume">📄 Download Resume</a>
+                    <a href="resources/Ousama Alabdullah Resume.pdf" download target="_blank" class="contact-btn resume">📄 Download Resume</a>
                 </div>
                 <button id="playAgain">Play Again</button>
             </div>
@@ -208,7 +231,7 @@
                     <a href="https://mail.google.com/mail/?view=cm&fs=1&to=OusamaHAlabdullah@gmail.com" target="_blank" class="contact-btn email">📧 Email Me</a>
                     <a href="https://github.com/OusamaAb" target="_blank" class="contact-btn github">💻 GitHub</a>
                     <a href="https://linkedin.com/in/ousama-alabdullah" target="_blank" class="contact-btn linkedin">💼 LinkedIn</a>
-                    <a href="resources/Ousama Alabdullah Resume Final.pdf" download target="_blank" class="contact-btn resume">📄 Download Resume</a>
+                    <a href="resources/Ousama Alabdullah Resume.pdf" download target="_blank" class="contact-btn resume">📄 Download Resume</a>
                 </div>
             </div>
         </div>

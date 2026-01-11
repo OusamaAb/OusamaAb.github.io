@@ -6,12 +6,17 @@ let gameState = {
     lives: 3,
     progress: 0,
     maxProgress: 5,
-    gameSpeed: 2,
+    gameSpeed: 150, // pixels per second (was 2 pixels per frame at 60fps = 120 pixels/sec)
     score: 0,
     soundEnabled: false,
     lastLifeLoss: 0,
     lifeLossDelay: 1000 // 1 second delay between losing lives
 };
+
+// Frame rate independence variables
+let lastFrameTime = performance.now();
+const targetFPS = 60;
+const frameTime = 1000 / targetFPS;
 
 // Audio context for sound effects
 let audioContext;
@@ -118,14 +123,14 @@ function toggleAudio() {
 // Game Objects
 let player = {
     x: 50,
-    y: 300,
+    y: 600,
     width: 50,
     height: 50,
     velocityY: 0,
     isJumping: false,
     jumpPower: 14,
     gravity: 0.6,
-    groundY: 300,
+    groundY: 600,
     scale: 1,
     rotation: 0,
     isFlashing: false,
@@ -283,6 +288,9 @@ function initGame() {
     // Initialize obstacles
     createObstacles();
     
+    // Initialize frame time for delta-time calculations
+    lastFrameTime = performance.now();
+    
     // Start game loop
     gameLoop();
 }
@@ -338,7 +346,9 @@ function handleTouch(event) {
 // Player jump function
 function jump() {
     if (!player.isJumping) {
-        player.velocityY = -player.jumpPower;
+        // Jump power adjusted for good height while still falling quickly
+        const jumpPowerPerSecond = 450;
+        player.velocityY = -jumpPowerPerSecond;
         player.isJumping = true;
         
         // Jump animation effects
@@ -355,6 +365,7 @@ function startGame() {
     gameState.isPaused = false;
     gameState.lastLifeLoss = 0; // Reset life loss timer
     player.isFlashing = false; // Reset flashing state
+    lastFrameTime = performance.now(); // Reset frame timer for accurate deltaTime
     document.getElementById('instructions').style.display = 'none';
     document.getElementById('pauseButton').style.display = 'block';
     document.getElementById('menuButton').style.display = 'block';
@@ -367,9 +378,10 @@ function restartGame() {
     gameState.isPaused = false;
     gameState.lives = 3;
     gameState.progress = 0;
-    gameState.gameSpeed = 2;
+    gameState.gameSpeed = 150; // pixels per second
     gameState.lastLifeLoss = 0; // Reset life loss timer
     player.isFlashing = false; // Reset flashing state
+    lastFrameTime = performance.now(); // Reset frame timer
     
     // Close all modals
     document.querySelectorAll('.modal').forEach(modal => {
@@ -400,30 +412,45 @@ function resetGame() {
 }
 
 // Main game loop
-function gameLoop() {
+function gameLoop(currentTime) {
     if (gameState.isRunning && !gameState.isPaused) {
-        update();
+        // Calculate delta time for frame-rate independence
+        const deltaTime = (currentTime - lastFrameTime) / 1000; // Convert to seconds
+        lastFrameTime = currentTime;
+        
+        // Cap deltaTime to prevent large jumps (e.g., when tab becomes active)
+        // Cap to 1/30th of a second (30fps minimum) to prevent physics issues
+        const cappedDeltaTime = Math.min(deltaTime, 1/30);
+        update(cappedDeltaTime);
         draw();
+    } else {
+        // Update lastFrameTime even when paused to prevent huge delta when resuming
+        lastFrameTime = currentTime;
+        // Still draw to show paused state
+        if (gameState.isRunning) {
+            draw();
+        }
     }
     
     requestAnimationFrame(gameLoop);
 }
 
 // Update game state
-function update() {
-    updatePlayer();
-    updateObstacles();
-    updateClouds();
+function update(deltaTime) {
+    updatePlayer(deltaTime);
+    updateObstacles(deltaTime);
+    updateClouds(deltaTime);
     checkCollisions();
     checkGameOver();
     // checkWin() is now called when obstacles are collected, not in the main loop
 }
 
 // Update player physics
-function updatePlayer() {
-    // Apply gravity
-    player.velocityY += player.gravity;
-    player.y += player.velocityY;
+function updatePlayer(deltaTime) {
+    // Apply gravity - increased for faster falling
+    const gravityPerSecond = 750;
+    player.velocityY += gravityPerSecond * deltaTime;
+    player.y += player.velocityY * deltaTime;
     
     // Handle flashing effect
     const currentTime = Date.now();
@@ -434,7 +461,7 @@ function updatePlayer() {
         }
     }
     
-    // Animate scale and rotation back to normal
+    // Animate scale and rotation back to normal (these are visual, keep frame-based is fine)
     if (player.scale > 1) {
         player.scale -= 0.02;
         if (player.scale < 1) player.scale = 1;
@@ -457,11 +484,11 @@ function updatePlayer() {
 }
 
 // Update obstacles
-function updateObstacles() {
+function updateObstacles(deltaTime) {
     obstacles.forEach(obstacle => {
         if (!obstacle.collected) {
-            // Move non-collected obstacles
-            obstacle.x -= gameState.gameSpeed;
+            // Move non-collected obstacles (gameSpeed is now in pixels per second)
+            obstacle.x -= gameState.gameSpeed * deltaTime;
             
             // Check for missed obstacles (off screen) and respawn them
             if (obstacle.x < -50) {
@@ -500,10 +527,11 @@ function updateObstacles() {
 }
 
 // Update cloud positions
-function updateClouds() {
+function updateClouds(deltaTime) {
     clouds.forEach(cloud => {
-        // Move cloud to the left
-        cloud.x -= cloud.speed;
+        // Move cloud to the left (convert speed to pixels per second: speed * 60)
+        const cloudSpeedPerSecond = cloud.speed * 60;
+        cloud.x -= cloudSpeedPerSecond * deltaTime;
         
         // Reset cloud position when it goes off screen
         if (cloud.x + cloud.size < 0) {
