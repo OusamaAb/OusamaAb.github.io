@@ -123,14 +123,14 @@ function toggleAudio() {
 // Game Objects
 let player = {
     x: 50,
-    y: 600,
+    y: 300,
     width: 50,
     height: 50,
     velocityY: 0,
     isJumping: false,
     jumpPower: 14,
     gravity: 0.6,
-    groundY: 600,
+    groundY: 300,
     scale: 1,
     rotation: 0,
     isFlashing: false,
@@ -194,6 +194,19 @@ const blockTypes = [
 function initGame() {
     canvas = document.getElementById('gameCanvas');
     ctx = canvas.getContext('2d');
+    
+    // Set canvas height based on screen size - larger for mobile, original for desktop
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) {
+        canvas.height = 800;
+        player.groundY = 600;
+        player.y = 600;
+    } else {
+        // Keep original size for desktop
+        canvas.height = 400;
+        player.groundY = 300;
+        player.y = 300;
+    }
     
     // Load character images
     characterImage.onload = function() {
