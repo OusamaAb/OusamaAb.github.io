@@ -3,7 +3,7 @@
 const { useEffect: useEffectBA } = React;
 
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-  "dark": true,
+  "dark": false,
   "accent": "#6e9bff"
 }/*EDITMODE-END*/;
 
