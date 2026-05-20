@@ -1,7 +1,7 @@
 const { useEffect: useEffectChat, useState: useStateChat } = React;
 
 const CHAT_API_ERROR =
-  "I could not reach the portfolio chat API. Start the local Node dev server and try again.";
+  "I could not reach the portfolio chat API. Please try again shortly.";
 const CHAT_SESSION_STORAGE_KEY = "ousama_portfolio_chat_session";
 const CHAT_API_URL = window.OUSAMA_CHAT_API_URL || "/api/chat";
 
