@@ -45,6 +45,16 @@
 }
 .hc-restart:hover { background: var(--panel); color: var(--ink); }
 
+.hc-wake-note {
+  padding: 9px 22px;
+  border-bottom: 0.5px solid var(--rule);
+  background: color-mix(in oklab, var(--accent) 8%, var(--panel));
+  color: var(--ink-soft);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  line-height: 1.45;
+}
+
 .hc-body {
   flex: 1; min-height: 0;
   overflow-y: auto;

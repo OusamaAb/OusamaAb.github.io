@@ -11,6 +11,7 @@ function HeroChatB() {
   const inputRef = useRefBC(null);
   const stickToBottom = useRefBC(true);
   const sendRef = useRefBC(send);
+  const showWakeNote = messages.length <= 1 || (pending && messages.length <= 2);
 
   useEffectBC(() => {
     sendRef.current = send;
@@ -74,6 +75,12 @@ function HeroChatB() {
         </div>
         <button className="hc-restart" onClick={reset} title="Start over">↻</button>
       </div>
+
+      {showWakeNote && (
+        <div className="hc-wake-note">
+          First reply may take a few seconds while the chat server wakes up.
+        </div>
+      )}
 
       <div className="hc-body" ref={scrollRef} onScroll={handleBodyScroll}>
         {messages.map((m, i) => (
